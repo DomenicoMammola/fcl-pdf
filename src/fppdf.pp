@@ -4952,7 +4952,7 @@ begin
   FDict.AddElement('DescendantFonts', Arr);
   CreateTTFDescendantFont(EmbeddedFontNum);
 
-  if not (poNoEmbeddedFonts in Options) then
+  if (not (poNoEmbeddedFonts in Options)) or (poPDFA in Options) then
   begin
     FDict.AddReference('ToUnicode', GlobalXRefCount);
     CreateToUnicode(EmbeddedFontNum);
@@ -5040,7 +5040,7 @@ begin
   FDict.AddInteger('ItalicAngle', trunc(Fonts[EmbeddedFontNum].FTrueTypeFile.ItalicAngle));
   FDict.AddInteger('StemV', Fonts[EmbeddedFontNum].FTrueTypeFile.StemV);
   FDict.AddInteger('MissingWidth', Fonts[EmbeddedFontNum].FTrueTypeFile.MissingWidth);
-  if not (poNoEmbeddedFonts in Options) then
+  if (not (poNoEmbeddedFonts in Options)) or (poPDFA in Options) then
   begin
     FDict.AddReference('FontFile2', GlobalXRefCount);
     CreateFontFileEntry(EmbeddedFontNum);
